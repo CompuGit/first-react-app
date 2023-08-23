@@ -1,24 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.js';
 
-function App() {
+function App() { //react component - a function that returs jsx
+  /*
+  html - class attribute
+  changed to 
+  jsx - className */
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <header className='bg-primary text-white text-center p-3'>
+      <h1>Welcome to UI Designing</h1>
+      <h3>React + Bootstrap</h3>
+    </header> 
   );
 }
 
