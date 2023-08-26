@@ -22,13 +22,22 @@ function App() { //react component - a function that returs jsx
 
   const [values, setValues] = useState([])
 
+  const [valid, setValid] = useState(false)
+
   const valueHandler = (event) => {
     setInputString(event.target.value)
+    setValid(true)
   }
 
   const submitHandler = ()=>{
-   setValues([...values, inputString])
-   setInputString('')
+    if(inputString.length>0){
+      setValues([...values, inputString])
+      setInputString('')
+      setValid(true)
+    }
+    else{
+      setValid(false)
+    }
   }
 
   
@@ -44,9 +53,20 @@ function App() { //react component - a function that returs jsx
         <button className='btn btn-primary' onClick={submitHandler}> + </button>
       </div>
 
+      {!valid && <p style={{color:'red', textAlign:"center"}}> You need to enter something</p> }
+      {//!valid ? <p style={{color:'red', textAlign:"center"}}> You need to enter something</p> : <p style={{color:'green', textAlign:"center"}}> there is smoething</p> 
+      }
+
       {
         values.map((ele, index)=>{
-          return <Card key={index} text={ele}/>
+          return <Card key={index}
+          onDelete={()=>{
+            setValues(()=>{
+              return values.filter((e, i)=>{
+                return i!==index
+              })
+            })
+          }} text={ele} />
         })
       }
       
